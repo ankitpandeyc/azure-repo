@@ -1,0 +1,9 @@
+{
+	"name": "ADF-Azure-Projectt",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "39f29c0e-e17d-4d56-863e-229812b416d3",
+		"tenantId": "da753e42-34cf-4c20-9bf4-fc4ff70928bf"
+	}
+}
