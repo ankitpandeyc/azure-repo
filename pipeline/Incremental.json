@@ -188,7 +188,7 @@
 						"parameters": {
 							"container": "bronze",
 							"folder": "cdc",
-							"file": "cdc.json"
+							"file": "empty.json"
 						}
 					}
 				],
@@ -199,7 +199,7 @@
 						"parameters": {
 							"container": "bronze",
 							"folder": "cdc",
-							"file": "empty.json"
+							"file": "cdc.json"
 						}
 					}
 				]
