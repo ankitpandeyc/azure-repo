@@ -123,8 +123,11 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "pipelineReturnValue",
-					"setSystemVariable": true
+					"variableName": "curr",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
 				}
 			},
 			{
