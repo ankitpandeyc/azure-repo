@@ -359,11 +359,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"loop_input": {
-				"type": "array"
-			}
-		},
 		"variables": {
 			"curr": {
 				"type": "String"
