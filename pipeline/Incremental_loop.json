@@ -38,7 +38,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{pipeline().parameters.schema}.@{pipeline().parameters.table} where @{pipeline().parameters.cdc_col} > '@{if(empty(pipeline().parameters.from_date),activity('lookup_lastcdc').output.value[0].cdc,pipeline().parameters.from_date)}'",
+										"value": "select * from @{item().schema}.@{item().table}\n@{item().cdc_col} > variables('curr')",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -76,11 +76,11 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@pipeline().parameters.table",
+											"value": "@{item().table}",
 											"type": "Expression"
 										},
 										"file": {
-											"value": "@concat(pipeline().parameters.table,'_',variables('curr'))",
+											"value": "concat(@{item().table},'_',variables('curr'))",
 											"type": "Expression"
 										}
 									}
@@ -117,7 +117,7 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@{pipeline().parameters.table}_cdc",
+											"value": "@{item().table}_cdc",
 											"type": "Expression"
 										},
 										"file": "cdc.json"
@@ -268,7 +268,7 @@
 												"parameters": {
 													"container": "bronze",
 													"folder": {
-														"value": "@{pipeline().parameters.table}_cdc",
+														"value": "@{item().table}_cdc",
 														"type": "Expression"
 													},
 													"file": "cdc.json"
@@ -297,7 +297,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "select max(@{pipeline().parameters.cdc_col}) as cdc from @{pipeline().parameters.schema}.@{pipeline().parameters.table}",
+														"value": "select max(@{item().cdc_col}) as cdc from @{item().schema}.@{item().table}",
 														"type": "Expression"
 													}
 												}
@@ -314,7 +314,7 @@
 		],
 		"parameters": {
 			"loop_input": {
-				"type": "string"
+				"type": "array"
 			}
 		},
 		"variables": {
