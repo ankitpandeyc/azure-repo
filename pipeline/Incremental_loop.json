@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lookup_source').output.table",
+						"value": "@activity('lookup_source').output.firstRow.table",
 						"type": "Expression"
 					},
 					"isSequential": true,
