@@ -43,7 +43,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{item().schema}.@{item().table}\n@{item().cdc_col} > variables('curr')",
+										"value": "select * from @{item().schema}.@{item().table}\nwhere @{item().cdc_col} > variables('curr')",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
