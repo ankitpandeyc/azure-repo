@@ -43,7 +43,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{item().schema}.@{item().table}\nwhere @{item().cdc_col} > variables('curr')",
+										"value": "select * from @{item().schema}.@{item().table}\nwhere @{item().cdc_col} > @{activity('lookup_lastcdc').output.value[0].cdc}",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
